@@ -5,7 +5,7 @@ import bs4
 
 app = Flask(__name__)
 
-@app.route("/link_preview/<path:url>", methods=['GET'])
+@app.route("/<path:url>", methods=['GET'])
 def link_preview(url):
     response = requests.get(url)
     response.raise_for_status()
