@@ -1,6 +1,6 @@
 # link-preview-api
 
-Preview links
+## Preview links
 I guess we all know what happens on Facebook when you paste an URL into a post?
 Facebook's server automatically grabs the title, description, and picks a thumbnail image from the original website.
 This API service is doing exactly that!
