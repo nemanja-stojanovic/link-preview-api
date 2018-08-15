@@ -13,7 +13,7 @@ def link_preview(url):
     response.raise_for_status()
     page = bs4.BeautifulSoup(response.content, 'lxml')
     meta_descriptions = page.select('meta[name="description"]')
-    meta_images = page.select('meta[name="thumbnail"]')
+    meta_images = page.select('meta[name="image"]')
     meta_titles = page.select('meta[property="og:title"]')
     if len(meta_descriptions) > 0:
         meta_description = meta_descriptions[0]
