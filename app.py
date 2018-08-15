@@ -13,13 +13,24 @@ def link_preview(url):
     response.raise_for_status()
     page = bs4.BeautifulSoup(response.content, 'lxml')
     meta_descriptions = page.select('meta[name="description"]')
-    content = None
+    meta_images = page.select('meta[name="image"]')
+    meta_titles = page.select('meta[property="og:title"]')
     if len(meta_descriptions) > 0:
         meta_description = meta_descriptions[0]
-        content = meta_description.attrs['content']
+        description = meta_description.attrs['content']
     else:
-        content = 'N/A'
-    return jsonify({'description': content})
+        description = 'N/A'
+    if len(meta_images) > 0:
+        meta_image = meta_images[0]
+        image = meta_image.attrs['content']
+    else:
+        image = 'N/A'
+    if len(meta_titles) > 0:
+        meta_title = meta_titles[0]
+        title = meta_title.attrs['content']
+    else:
+        title = 'N/A'
+    return jsonify({'description': description, 'image': image, 'title': title})
 
 if __name__ == '__main__':
     app.run()
